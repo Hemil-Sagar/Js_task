@@ -1,4 +1,4 @@
-// Rotate array left.
+// Rotate array right.
 
 const prompt = require("prompt-sync")();
 
@@ -9,12 +9,12 @@ for (let i = 0; i < size; i++) {
     arr[i] = Number(prompt(`Input element ${i + 1}: `));
 }
 
-let first = arr[0];
+let last = arr[size - 1];
 
-for (let i = 0; i < size - 1; i++) {
-    arr[i] = arr[i + 1];
+for (let i = size - 1; i > 0; i--) {
+    arr[i] = arr[i - 1];
 }
 
-arr[size - 1] = first;
+arr[0] = last;
 
-console.log("Array after left rotation:", arr);
+console.log("Array after right rotation:", arr);
