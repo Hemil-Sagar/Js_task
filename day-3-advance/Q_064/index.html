@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            text-align:center;
+        }
+
+        #gameBoard{
+            display:grid;
+            grid-template-columns:repeat(4,80px);
+            gap:10px;
+            justify-content:center;
+            margin-top:30px;
+        }
+
+        .card{
+            width:80px;
+            height:80px;
+            font-size:30px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Memory Card Game</h1>
+
+<p>Moves: <span id="moves">0</span></p>
+
+<div id="gameBoard"></div>
+
+<br>
+
+<button id="restart">Restart</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Expense Tracker</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    width:700px;
+    margin:30px auto;
+}
+
+input{
+    padding:10px;
+    margin:5px;
+}
+
+button{
+    padding:10px 20px;
+    cursor:pointer;
+}
+
+table{
+    width:100%;
+    margin-top:20px;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid black;
+    padding:10px;
+    text-align:center;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Expense Tracker</h1>
+
+<input
+type="text"
+id="title"
+placeholder="Expense Name">
+
+<input
+type="number"
+id="amount"
+placeholder="Amount">
+
+<button id="saveBtn">
+Add Expense
+</button>
+
+<h2>Total : ₹ <span id="total">0</span></h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Name</th>
+<th>Amount</th>
+<th>Date</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody id="expenseList">
+
+</tbody>
+
+</table>
+
+<script src="script.js"></script>
+
+</body>
+</html>

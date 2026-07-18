@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notes App</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    width:700px;
+    margin:30px auto;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+.note{
+    border:1px solid black;
+    padding:15px;
+    margin-top:15px;
+}
+
+.actions{
+    margin-top:10px;
+}
+
+small{
+    color:gray;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Notes App</h1>
+
+<textarea
+id="noteInput"
+placeholder="Write your note..."></textarea>
+
+<br>
+
+<button id="saveBtn">
+Save Note
+</button>
+
+<hr>
+
+<div id="notes"></div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
