@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debounce Function</title>
+</head>
+<body>
+
+    <h1>Debounce Function</h1>
+
+    <p>
+        Start typing a user's name.
+        The API request will be sent only after you stop typing for 500 milliseconds.
+    </p>
+
+    <input
+        type="text"
+        id="search"
+        placeholder="Search User..."
+    >
+
+    <h3>Result</h3>
+
+    <pre id="result">Start typing...</pre>
+
+    <br>
+
+    <a href="index.html">⬅ Back to Home</a>
+
+    <script>
+
+        const search = document.getElementById("search");
+        const result = document.getElementById("result");
+
+        function debounce(func, delay) {
+
+            let timer;
+
+            return function () {
+
+                clearTimeout(timer);
+
+                timer = setTimeout(() => {
+
+                    func();
+
+                }, delay);
+
+            };
+
+        }
+
+        function searchUser() {
+
+            const name = search.value;
+
+            if (name === "") {
+                result.textContent = "Start typing...";
+                return;
+            }
+
+            fetch(`http://localhost:3000/search?name=${name}`)
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    result.textContent = JSON.stringify(data, null, 2);
+
+                })
+
+                .catch(error => {
+
+                    result.textContent = error.message;
+
+                });
+
+        }
+
+        search.addEventListener(
+            "keyup",
+            debounce(searchUser, 500)
+        );
+
+    </script>
+
+</body>
+</html>

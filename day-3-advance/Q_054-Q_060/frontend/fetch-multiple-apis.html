@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Multiple APIs</title>
+</head>
+<body>
+
+    <h1>Fetch Multiple APIs</h1>
+
+    <p>
+        Click the button to fetch Users, Posts, and Comments at the same time.
+    </p>
+
+    <button id="fetchBtn">Fetch Data</button>
+
+    <hr>
+
+    <h3>Users</h3>
+    <pre id="users">No data</pre>
+
+    <h3>Posts</h3>
+    <pre id="posts">No data</pre>
+
+    <h3>Comments</h3>
+    <pre id="comments">No data</pre>
+
+    <br>
+
+    <a href="index.html">⬅ Back to Home</a>
+
+    <script>
+
+        const button = document.getElementById("fetchBtn");
+
+        button.addEventListener("click", () => {
+
+            Promise.all([
+                fetch("http://localhost:3000/users"),
+                fetch("http://localhost:3000/posts"),
+                fetch("http://localhost:3000/comments")
+            ])
+
+            .then(responses => {
+
+                return Promise.all(
+                    responses.map(response => response.json())
+                );
+
+            })
+
+            .then(([users, posts, comments]) => {
+
+                document.getElementById("users").textContent =
+                    JSON.stringify(users, null, 2);
+
+                document.getElementById("posts").textContent =
+                    JSON.stringify(posts, null, 2);
+
+                document.getElementById("comments").textContent =
+                    JSON.stringify(comments, null, 2);
+
+            })
+
+            .catch(error => {
+
+                alert(error.message);
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

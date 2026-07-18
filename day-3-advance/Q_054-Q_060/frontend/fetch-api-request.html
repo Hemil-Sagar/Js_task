@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API Request</title>
+</head>
+<body>
+
+    <h1>Fetch API Request</h1>
+
+    <p>
+        This page demonstrates how to use the <strong>Fetch API</strong> to request
+        data from a backend server.
+    </p>
+
+    <button id="fetchBtn">Fetch User</button>
+
+    <h3>Result</h3>
+
+    <pre id="result">No data fetched.</pre>
+
+    <br>
+
+    <a href="index.html">⬅ Back to Home</a>
+
+    <script>
+        const button = document.getElementById("fetchBtn");
+        const result = document.getElementById("result");
+
+        button.addEventListener("click", () => {
+
+            fetch("http://localhost:3000/users/1")
+                .then(response => response.json())
+                .then(data => {
+                    result.textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    result.textContent = error.message;
+                });
+
+        });
+    </script>
+
+</body>
+</html>

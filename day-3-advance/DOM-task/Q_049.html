@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Validator</title>
+</head>
+<body>
+
+    <h2>Name Validation</h2>
+
+    <form id="form">
+        <label>Enter Name:</label><br>
+        <input type="text" id="name"><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        const form = document.getElementById("form");
+        const name = document.getElementById("name");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+
+            if (name.value.trim() === "") {
+                message.textContent = "Please enter your name.";
+            } else {
+                message.textContent = "Name submitted successfully!";
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 50px;
+            margin: 20px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Stopwatch</h1>
+
+        <h2 id="display">00:00:00</h2>
+
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+    </div>
+
+    <script>
+        const display = document.getElementById("display");
+        const startBtn = document.getElementById("start");
+        const stopBtn = document.getElementById("stop");
+        const resetBtn = document.getElementById("reset");
+
+        let hours = 0;
+        let minutes = 0;
+        let seconds = 0;
+
+        let timer = null;
+
+        function updateDisplay() {
+            let h = String(hours).padStart(2, "0");
+            let m = String(minutes).padStart(2, "0");
+            let s = String(seconds).padStart(2, "0");
+
+            display.textContent = `${h}:${m}:${s}`;
+        }
+
+        function startWatch() {
+            if (timer !== null) {
+                return;
+            }
+
+            timer = setInterval(function () {
+                seconds++;
+
+                if (seconds === 60) {
+                    seconds = 0;
+                    minutes++;
+                }
+
+                if (minutes === 60) {
+                    minutes = 0;
+                    hours++;
+                }
+
+                updateDisplay();
+            }, 1000);
+        }
+
+        function stopWatch() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        function resetWatch() {
+            stopWatch();
+
+            hours = 0;
+            minutes = 0;
+            seconds = 0;
+
+            updateDisplay();
+        }
+
+        startBtn.addEventListener("click", startWatch);
+        stopBtn.addEventListener("click", stopWatch);
+        resetBtn.addEventListener("click", resetWatch);
+    </script>
+
+</body>
+</html>

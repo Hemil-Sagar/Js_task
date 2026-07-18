@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await Example</title>
+</head>
+<body>
+
+    <h1>Async/Await Example</h1>
+
+    <p>
+        Click the button to fetch a user's data using
+        <strong>async/await</strong>.
+    </p>
+
+    <button id="fetchBtn">Fetch User</button>
+
+    <h3>Result</h3>
+
+    <pre id="result">No data fetched.</pre>
+
+    <br>
+
+    <a href="index.html">⬅ Back to Home</a>
+
+    <script>
+
+        const button = document.getElementById("fetchBtn");
+        const result = document.getElementById("result");
+
+        async function fetchUser() {
+
+            try {
+
+                const response = await fetch("http://localhost:3000/users/1");
+
+                const data = await response.json();
+
+                result.textContent = JSON.stringify(data, null, 2);
+
+            } catch (error) {
+
+                result.textContent = error.message;
+
+            }
+
+        }
+
+        button.addEventListener("click", fetchUser);
+
+    </script>
+
+</body>
+</html>

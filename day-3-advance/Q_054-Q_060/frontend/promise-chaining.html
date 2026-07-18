@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise Chaining</title>
+</head>
+<body>
+
+    <h1>Promise Chaining</h1>
+
+    <p>
+        Click the button to fetch a user first and then fetch
+        that user's posts using Promise Chaining.
+    </p>
+
+    <button id="fetchBtn">Load User & Posts</button>
+
+    <h3>Result</h3>
+
+    <pre id="result">No data fetched.</pre>
+
+    <br>
+
+    <a href="index.html">⬅ Back to Home</a>
+
+    <script>
+
+        const button = document.getElementById("fetchBtn");
+        const result = document.getElementById("result");
+
+        button.addEventListener("click", () => {
+
+            fetch("http://localhost:3000/users/1")
+
+                .then(response => response.json())
+
+                .then(user => {
+
+                    result.textContent =
+                        "User:\n" +
+                        JSON.stringify(user, null, 2);
+
+                    return fetch(`http://localhost:3000/posts?userId=${user.id}`);
+
+                })
+
+                .then(response => response.json())
+
+                .then(posts => {
+
+                    result.textContent +=
+                        "\n\nPosts:\n" +
+                        JSON.stringify(posts, null, 2);
+
+                })
+
+                .catch(error => {
+
+                    result.textContent = error.message;
+
+                });
+
+        });
+
+    </script>
+
+</body>
+</html>
