@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Password Generator</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    width: 500px;
+    margin: 40px auto;
+}
+
+input{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+label{
+    display:block;
+    margin:10px 0;
+}
+
+button{
+    padding:10px 20px;
+    cursor:pointer;
+    margin-right:10px;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Password Generator</h1>
+
+<label>
+Length
+<input
+type="number"
+id="length"
+value="12"
+min="4"
+max="50">
+</label>
+
+<label>
+<input type="checkbox" id="uppercase" checked>
+Uppercase Letters
+</label>
+
+<label>
+<input type="checkbox" id="lowercase" checked>
+Lowercase Letters
+</label>
+
+<label>
+<input type="checkbox" id="numbers" checked>
+Numbers
+</label>
+
+<label>
+<input type="checkbox" id="symbols" checked>
+Symbols
+</label>
+
+<input
+type="text"
+id="password"
+readonly
+placeholder="Generated Password">
+
+<button id="generateBtn">
+Generate
+</button>
+
+<button id="copyBtn">
+Copy
+</button>
+
+<script src="script.js"></script>
+
+</body>
+</html>

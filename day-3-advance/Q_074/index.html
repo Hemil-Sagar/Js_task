@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Typing Speed Test</title>
+
+<style>
+
+body{
+    font-family:Arial;
+    width:700px;
+    margin:40px auto;
+}
+
+#sentence{
+    border:1px solid black;
+    padding:15px;
+    margin-bottom:20px;
+}
+
+textarea{
+    width:100%;
+    height:120px;
+    padding:10px;
+}
+
+button{
+    padding:10px 20px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+h2{
+    margin-top:20px;
+}
+
+</style>
+
+</head>
+<body>
+
+<h1>Typing Speed Test</h1>
+
+<p id="sentence"></p>
+
+<textarea
+id="typingArea"
+placeholder="Start typing here..."></textarea>
+
+<br>
+
+<button id="startBtn">
+Start Test
+</button>
+
+<button id="restartBtn">
+Restart
+</button>
+
+<h2 id="timer">
+Time : 60
+</h2>
+
+<h2 id="result"></h2>
+
+<script src="script.js"></script>
+
+</body>
+</html>
